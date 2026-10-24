@@ -1,0 +1,4 @@
+<?php
+require '../config.php'; exige_login();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { checa_csrf(); $pdo->prepare('DELETE FROM posts WHERE id = ?')->execute([(int)($_POST['id'] ?? 0)]); }
+header('Location: posts.php?ok=1');
